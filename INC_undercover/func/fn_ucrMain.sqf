@@ -33,12 +33,16 @@ switch (_operation) do {
 
 		_captiveStatus = captive _unit;
 		_unit setCaptive false;
-		_sideSwitchNeeded = !((side _unit) == _undercoverUnitSide);
+		_sideSwitchNeeded = 
+			{
+				if (!((side _unit) == _x);)
+				exitWith true;
+			} forEach _undercoverUnitSide;
 		_unit setCaptive _captiveStatus;
 
 		if (_switchSides && _sideSwitchNeeded) then {
 			private ["_newGroup","_oldGroup"];
-			_newGroup = createGroup [_undercoverUnitSide,true];
+			_newGroup = createGroup [(side _unit),true];
 			_oldGroup = (group _unit);
 			(units group _unit) joinSilent _newGroup;
 			deleteGroup _oldGroup;
@@ -59,7 +63,7 @@ switch (_operation) do {
 
 		if (missionNamespace getVariable ["INC_rebelCommanderSpawned",false]) exitWith {};
 
-		private _rebelGroup = [[(random 40),(random 40),10], _undercoverUnitSide, 1] call BIS_fnc_spawnGroup;
+		private _rebelGroup = [[(random 40),(random 40),10], (side _unit), 1] call BIS_fnc_spawnGroup;
 		_commander = leader _rebelGroup;
 		_commander setRank "COLONEL";
 		_commander disableAI "ALL";
@@ -339,7 +343,7 @@ switch (_operation) do {
 
 		_originalGroup = group _groupLead;
 
-		_newGroup = createGroup _undercoverUnitSide;
+		_newGroup = createGroup (side _unit);
 
 		_nonPlayableArray = [];
 

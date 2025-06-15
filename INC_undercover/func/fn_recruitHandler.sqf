@@ -175,9 +175,9 @@ switch (_operation) do {
 
         _percentage = (linearConversion [0, 40000, (rating _undercoverUnit), 5, 70, true]);
 
-        if ((side _civ)==_undercoverUnitSide) then {
+        {if ((side _civ)==_x) then {
             _percentage = _percentage + 20;
-        };
+        };} forEach _undercoverUnitSide;
 
         if (_percentage > 30) then {
             if ((_percentage > (random 100)) && {_undercoverUnit getVariable ["isUndercover", false]}) then {

@@ -8,7 +8,7 @@ Please check each setting carefully otherwise the script may not function proper
 
 //-------------------------Player settings-------------------------
 
-_undercoverUnitSide = west;             //What side is/are the undercover unit(s) on? (Can be east, west or independent - only one side supported)
+_undercoverUnitSide = [west, east];             //What side is/are the undercover unit(s) on? (Can be east, west or independent - only one side supported)
 
 //-------------------------General Settings-------------------------
 

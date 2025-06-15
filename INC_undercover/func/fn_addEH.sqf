@@ -20,9 +20,9 @@ Author:
 Incontinentia
 ---------------------------------------------------------------------------- */
 
-params [["_unit",objNull],["_barbaric",false],["_undercoverUnitSide",west]];
+params [["_unit",objNull],["_barbaric",false],["_undercoverUnitSide",[west]];
 
-if ((_unit getVariable ["INC_undercoverSide",sideEmpty]) isEqualTo _undercoverUnitSide) exitWith {};
+{ if ((_unit getVariable ["INC_undercoverSide",sideEmpty]) isEqualTo _x) exitWith {}; } forEach _undercoverUnitSide;
 
 _unit setVariable ["INC_unitSide",(side _unit)];
 
