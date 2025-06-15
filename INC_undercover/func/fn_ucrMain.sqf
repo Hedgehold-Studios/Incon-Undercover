@@ -36,7 +36,7 @@ switch (_operation) do {
 		_sideSwitchNeeded = 
 			{
 				if (!((side _unit) == _x);)
-				exitWith true;
+				exitWith {true};
 			} forEach _undercoverUnitSide;
 		_unit setCaptive _captiveStatus;
 
